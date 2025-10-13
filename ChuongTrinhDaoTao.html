@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        text-align: left !important;
+    }
+
+    .container{
+        border: 6px double black;
+        width: 600px;
+        margin: 50px;
+        height: 310px;
+    }
+
+    ol{
+        margin-left: 26px;
+    }
+</style>
+<body>
+    <div class="container">
+        <ol>
+            <li>Kỹ thuật viên tin học</li>
+            <li><a href="ChuongTrinhDTWeb.html">Chuyên ngành Website</a></li>
+        </ol>
+        <hr>
+        <span style="color: red; margin-left: 10px;">Kỹ thuật viên tin học</span><br>
+
+        <a href="#HocPhan1" style="margin-left: 10px;">Học phần I</a><br>
+        <a href="#HocPhan2" style="margin-left: 10px;">Học phần II</a><br>
+        <a href="#HocPhan3" style="margin-left: 10px;">Học phần III</a><br>
+
+        <ol type="I">
+            <li id="HocPhan1">
+                Tin Học Căn Bản
+                <ol>
+                    <li>Tổng quan cấu trúc máy tính</li>
+                    <li>Hệ điều hành Window</li>
+                </ol>
+            </li>
+            <li id="HocPhan2">
+                Tin Học văn Phòng
+                <ol>
+                    <li>Microsoft Word</li>
+                    <li>MicroSoft Excel</li>
+                </ol>
+            </li>
+            <li id="HocPhan3">
+                Tin Học Quản Lý
+                <ol>
+                    <li>Microsoft Access</li>
+                    <li>MicroSoft PowerPoint</li>
+                </ol>
+            </li>
+        </ol>
+        <span style="float: right;"><a href="#">Đầu trang</a></span>
+    </div>
+</body>
+</html>

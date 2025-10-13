@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2{
+        border: 1px double red;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        font-size: 20px;
+    }
+
+    .container{
+        width: 200px;
+        height: 200px;
+        border: 1px double red;
+        margin-top: 2px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .resource{
+        width: auto;
+        height: 160px;
+    }
+
+    .price{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: red;
+        color: white;
+        padding: 10px;
+        border-top-right-radius: 10px;
+        
+    }
+
+    .sale{
+        position: absolute;
+        width: auto;
+        height: 60px;
+        top: -20px;
+        right: -20px;
+    }
+
+    .function_container{
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: white;
+    }
+
+    .button_function{
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid black;
+        padding: 2px;
+        box-shadow: 2px 2px 6px red;
+        cursor: pointer;
+    }
+    .button_function:hover{
+        transform: scale(1.2);
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Redmi note 11</h2>
+        <div class="container">
+            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/8/0/800x800-640x640-5_4_3_1_1.png" alt="redmi note 11 phone image" class="resource">
+            <div class="price">$200</div>
+            <img src="https://www.freeiconspng.com/thumbs/sales-png/sales-png-9.png" alt="sale_image" class="sale">
+            <div class="function_container">
+                <img 
+                    src="https://marketplace.canva.com/RV47E/MAFyJYRV47E/1/tl/canva-green-shopping-cart-flat-icon-MAFyJYRV47E.png" 
+                    alt="add to cart icon" 
+                    class="add-to-cart button_function"
+                >
+                <img 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWAbekJ8eJzpJxRhbRm5j6MrLGaac8v32bmA&s" 
+                    alt="add to cart icon" 
+                    class="add-to-cart button_function"
+                >
+                <img 
+                    src="https://t4.ftcdn.net/jpg/05/40/09/17/360_F_540091788_AvDyNUSbtnKQfNccukuFa3ZlsHFnMYrK.jpg" 
+                    alt="add to cart icon" 
+                    class="add-to-cart button_function"
+                >
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Redmi note 11</h2>
+        <div class="container">
+            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/8/0/800x800-640x640-5_4_3_1_1.png" alt="redmi note 11 phone image" class="resource">
+            <div class="price">$200</div>
+            <img src="https://www.freeiconspng.com/thumbs/sales-png/sales-png-9.png" alt="sale_image" class="sale">
+            <div class="function_container">
+                <img 
+                    src="https://marketplace.canva.com/RV47E/MAFyJYRV47E/1/tl/canva-green-shopping-cart-flat-icon-MAFyJYRV47E.png" 
+                    alt="add to cart icon" 
+                    class="add-to-cart button_function"
+                >
+                <img 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWAbekJ8eJzpJxRhbRm5j6MrLGaac8v32bmA&s" 
+                    alt="add to cart icon" 
+                    class="add-to-cart button_function"
+                >
+                <img 
+                    src="https://t4.ftcdn.net/jpg/05/40/09/17/360_F_540091788_AvDyNUSbtnKQfNccukuFa3ZlsHFnMYrK.jpg" 
+                    alt="add to cart icon" 
+                    class="add-to-cart button_function"
+                >
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add New Product</h1>
+    <input type="text" id="add_product">
+    <button onclick="add_product()">Add</button>
+    <h1>Display All Product</h1>
+    <table id="show_product_list" border="1" cellspacing="0" cellpadding="10"></table>
+</body>
+<script>
+    let product_list =[];
+    
+    var table = '';
+    function show_product(){
+        if (table !== "") table = "";
+        
+        table +=
+            `<tr>
+                <th>Product Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>`;
+        for (var i = 0; i < product_list.length; i++){
+            table +=
+            `<tr>
+                <td>${product_list[i]}</td>
+                <td><button onclick="edit(this)">Edit</button></td>
+                <td><button onclick="del(this)">Delete</button></td>
+            </tr>`;
+        }
+
+        return table;
+    }
+
+    function add_product(){
+        var newProductInput = document.getElementById("add_product").value;
+        product_list.push(newProductInput);
+        document.getElementById('show_product_list').innerHTML = show_product();
+    }
+
+    function edit(button) {
+        var row = button.parentNode.parentNode;
+        var index = row.rowIndex - 1;
+        var currentName = product_list[index];
+        var newName = prompt("Nhập tên sản phẩm mới", currentName);
+        if (newName !== null && newName.trim() !== '') {
+            product_list[index] = newName;
+            document.getElementById('show_product_list').innerHTML = show_product();
+        }
+    }
+    
+    function del(index){
+        product_list.splice(index - 1, 1);
+        document.getElementById('show_product_list').innerHTML = show_product();
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById('show_product_list').innerHTML = show_product();
+    });
+    
+</script>
+</html>

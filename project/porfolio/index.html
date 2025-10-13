@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Bản Thân</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background: white;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+        
+        header {
+            background: black;
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .info-section {
+            margin-bottom: 30px;
+        }
+        
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-item strong {
+            color: #764ba2;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .about {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../porfolio/">Trang Chủ</a></li>
+                <li><a href="../porfolio/learning_plan.html">Kế hoạch học tập</a></li>
+                <li><a href="#about">Sở thích</a></li>
+                <li><a href="../porfolio/contact.html">Liên hệ</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero" id="home">
+            <img src="quoc_tin.png" alt="Profile Photo" class="profile-img">
+            <h1>Lý Trần Quốc Tín</h1>
+            <p>Sinh viên khoa CNTT - ngành Sư phạm Tin học</p>
+        </div>
+
+        <div class="content">
+            <div class="info-section">
+                <h2>Thông Tin Cá Nhân</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>📝 MSSV:</strong>
+                        51.01.103.097
+                    </div>
+                    <div class="info-item">
+                        <strong>🎂 Ngày sinh:</strong>
+                        22/06/2007
+                    </div>
+                    <div class="info-item">
+                        <strong>👤 Tuổi:</strong>
+                        18
+                    </div>
+                    <div class="info-item">
+                        <strong>📞 Điện thoại:</strong>
+                        0919 134 656
+                    </div>
+                    <div class="info-item">
+                        <strong>📧 Email:</strong>
+                        lytranquoctin220607@gmail.com
+                    </div>
+                    <div class="info-item">
+                        <strong>🏠 Địa chỉ:</strong>
+                        Số 142B1, hẻm 142 đường Mậu Thân, Ninh Kiều, Cần Thơ
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section" id="about">
+                <h2>Về Tôi</h2>
+                <div class="about">
+                    <p>
+                        Xin chào! Mình là <strong>Lý Trần Quốc Tín</strong>, hiện đang là sinh viên năm 1 ngành Sư phạm tin học. 
+                        Mình có niềm đam mê với lập trình phần mềm và luôn cố gắng học hỏi những công nghệ mới.
+                    </p>
+                </div>
+            </div>
+            <div class="info-section" id="hobby">
+                <h2>Sở thích</h2>
+                <div class="about">
+                    <p>
+                        Mình thích lập trình web, app, NCKH, tạo ra những sản phẩm phục vụ cho đời sống<br>
+                        Ngoài ra, mình thích nghiên cứu về A.I, các thuật toán học máy, các model,...<br>
+                        Bên cạnh đó, mình rất thích xem anime, đọc manga, các loại sách học thuật<br>
+                        Cuối cùng, mình vẫn thích xem phim, lướt tiktok, xem netflix (nhưng hong có tìn huhuh)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Bản quyền thuộc về Lý Trần Quốc Tín. Cấm sao chép dưới mọi hình thức</p>
+    </footer>
+</body>
+</html>

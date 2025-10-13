@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        color: black;
+        overflow: auto;
+    }
+
+    img{
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+</style>
+<body>
+    <img src="https://mediaen.vietnamplus.vn/images/f579a678cf9e90879541752073c26005a159b72427c31fb6e6b4d3719fc6f49f2288e7eccd536c5e438c3e9abcbd09d66c77fca0306773aaf8b434fba0c7f1ff/vna_festa.jpg.webp" alt="">
+    <table border="1" cellspacing="0" cellpadding="10" width="100%" height="380px" style="margin-top: 0;">
+        <thead>
+            <tr>
+                <th colspan="3" style="color: green">Lịch trình các chuyến bay</th> 
+            </tr>
+            <tr style="background-color: blue; color: white;">
+                <th rowspan="2">Thời gian</th>
+                <th colspan="2">Tuyến</th>
+            </tr>
+            <tr style="background-color: lightblue; color: red;">
+                <th>Nơi đi</th>
+                <th>Điểm đến</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+            <tr>
+                <td rowspan="2" style="color: red; font-weight: bold;">Sáng</td>
+                <td style="color: darkblue;">TP. Hồ Chí Minh</td>
+                <td style="color: darkblue;">Hà Nội</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue;">TP. Hồ Chí Minh</td>
+                <td style="color: darkblue;">Singapore</td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="color: red; font-weight: bold;">Chiều</td>
+                <td style="color: darkblue;">Hà Nội</td>
+                <td style="color: darkblue;">New York</td>
+            </tr>
+            <tr>
+                <td style="color: darkblue;">TP. Hồ Chí Minh</td>
+                <td style="color: darkblue;">Phú Quốc</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

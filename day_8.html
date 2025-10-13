@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Giá hoa quá</h1> 
+    <input type="text" placeholder="Nhập tên hoa quả..."> &nbsp; &nbsp; 
+    <button onclick="show_properties_prices()">Xem giá</button>
+    <br><br>
+    <p id="result"></p>
+</body>
+<script>
+    const show_properties_prices = () =>{
+        const result = document.getElementById("result");
+        const inputSearch = document.querySelector("input[type='text']").value.toLowerCase();
+        
+        const fruit_prices = {
+            "ổi": 20000,
+            "dưa hấu": 20000,
+            "táo": 30000,
+            "cam": 40000,
+            "chôm chôm": 40000,
+            "măng cụt": 50000
+        }
+        
+        fruit_prices[inputSearch] 
+        ? result.innerHTML = `Giá của ${inputSearch} là ${fruit_prices[inputSearch].toLocaleString("vi-VN")} VND/kg` 
+        : result.innerHTML = "Không tìm thấy sản phẩm";
+    };
+</script>
+</html>

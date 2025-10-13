@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-pencil-square"></i>
+                Nhập lương tháng 12
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">Mã nhân viên</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Nhập mã nhân viên">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Nhập họ và tên">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Câu lạc bộ</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Đà Nẵng</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mobileNumber" class="form-label">Lương</label>
+                            <input type="text" class="form-control" id="mobileNumber" placeholder="Nhập lương cầu thủ">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Thưởng</label>
+                            <input type="email" class="form-control" id="email" placeholder="Nhập tiền thưởng">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mobileNumber" class="form-label">Phụ cấp</label>
+                            <input type="text" class="form-control" id="mobileNumber" placeholder="Nhập phụ cấp (nếu có)">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="postalAddress" class="form-label">Ghi chú</label>
+                        <textarea class="form-control" id="postalAddress" rows="2" placeholder="Nhập ghi chú - nếu có"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i>
+                            Lưu
+                        </button>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-x-square-fill"></i>
+                            Hủy
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                Vui lòng nhập thông tin lương của cầu thủ
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>

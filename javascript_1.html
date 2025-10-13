@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let soTien = prompt("Moi ban nhap so tien!");
+    let soNam = prompt("Moi ban nhap so nam!");
+    let laiSuat = prompt("Moi ban nhap lai suat ngan hang hien tai!");
+
+    try {
+        soTien = parseInt(soTien); 
+        soNam = parseInt(soNam); 
+        laiSuat = parseFloat(laiSuat); 
+        
+        laiSuat = laiSuat / 100;
+        let ans = soTien + soNam * (soTien * laiSuat);
+        
+        document.write(`<h1>Sau ${soNam} năm, số tiền cả gốc lẫn lãi là: ${ans}</h1>`)
+    } catch (error) {
+        console.error("Error in program!", error);
+    }
+</script>
+</body>
+</html>

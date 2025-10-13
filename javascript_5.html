@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Calculator</h2>
+    <div class="container" style="display: flex; flex-direction: row;">
+        <input type="text" id="input1" placeholder="First number...">
+        <input type="text" id="input2" placeholder="Second number...">
+    </div><br>
+    <div class="container" style="display: flex; flex-direction: row;">
+        <button id="add-btn">Addition(+)</button>
+        <button id="sub-btn">Subtraction(-)</button>
+        <button id="mul-btn">Multiplication(*)</button>
+        <button id="div-btn">Division(/)</button>
+    </div>
+    
+    <p id="result"></p>
+</body>
+<script>
+    const addBtn = document.getElementById("add-btn");
+    const subBtn = document.getElementById("sub-btn");
+    const mulBtn = document.getElementById("mul-btn");
+    const divBtn = document.getElementById("div-btn");
+    const input1 = document.getElementById("input1");
+    const input2 = document.getElementById("input2");
+    const result = document.getElementById("result");
+
+    addBtn.addEventListener("click", () => {
+        const num1 = parseInt(input1.value);
+        const num2 = parseInt(input2.value);
+        result.textContent = `Result Addition: ${num1 + num2}`;
+    });
+
+    subBtn.addEventListener("click", () => {
+        const num1 = parseInt(input1.value);
+        const num2 = parseInt(input2.value);
+        result.textContent = `Result Subtraction: ${num1 - num2}`;
+    });
+    
+    mulBtn.addEventListener("click", () => {
+        const num1 = parseInt(input1.value);
+        const num2 = parseInt(input2.value);
+        result.textContent = `Result Multiplication: ${num1 * num2}`;
+    });
+
+    divBtn.addEventListener("click", () => {
+        const num1 = parseInt(input1.value);
+        const num2 = parseInt(input2.value);
+        result.textContent = `Result Division: ${num1 / num2}`;
+    });
+</script>
+</html>

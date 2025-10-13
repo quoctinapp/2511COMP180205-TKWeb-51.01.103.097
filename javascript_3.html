@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let a = ["Lesson 1", "Lesson_2", "Lesson 3", "lesson 4", "Lesson 5", "Lesson 6"];
+    let text = "<ul>";
+    for(let i = 0; i < a.length; ++i){
+        text += `<li> <a href="/lesson_${i+1}.html">${a[i]}</a> </li>`;
+        
+    }
+    text += "</ul>";
+    document.write(text);
+</script>
+</body>
+</html>

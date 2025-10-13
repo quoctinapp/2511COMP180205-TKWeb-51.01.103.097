@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .add-section {
+            background-color: #bbb;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 20px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .display-section h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-count {
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .product-header {
+            background-color: #999;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #bbb;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 3px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 6px 15px;
+            font-size: 13px;
+        }
+
+        .btn-delete {
+            background-color: #666;
+        }
+
+        .btn-delete:hover {
+            background-color: #444;
+        }
+
+        .edit-mode {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+            align-items: center;
+        }
+
+        .edit-mode input {
+            flex: 1;
+        }
+
+        .btn-save {
+            background-color: #4CAF50;
+        }
+
+        .btn-save:hover {
+            background-color: #45a049;
+        }
+
+        .btn-cancel {
+            background-color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="add-section">
+            <h2>Add New Product</h2>
+            <div class="input-group">
+                <input type="text" id="newProduct" placeholder="New Product">
+                <button onclick="addProduct()">Add</button>
+            </div>
+        </div>
+
+        <div class="display-section">
+            <h2>
+                Display All Product
+                <span class="product-count" id="productCount">9 products</span>
+            </h2>
+            <div class="product-header">Product Name</div>
+            <div id="productList"></div>
+        </div>
+    </div>
+
+    <script>
+        let products = [
+            'Sony Xperia',
+            'Samsung Galaxy',
+            'Nokia 6',
+            'Xiaomi Redmi Note 4',
+            'Apple iPhone 6S',
+            'Xiaomi Mi 5s Plus',
+            'Apple iPhone 8 Plus',
+            'Fujitsu F-04E',
+            'Oppo A71'
+        ];
+
+        function renderProducts() {
+            const productList = document.getElementById('productList');
+            const productCount = document.getElementById('productCount');
+            
+            productList.innerHTML = '';
+            productCount.textContent = products.length + ' products';
+
+            products.forEach((product, index) => {
+                const div = document.createElement('div');
+                div.className = 'product-item';
+                div.innerHTML = `
+                    <span class="product-name">${product}</span>
+                    <div class="product-actions">
+                        <button class="btn-edit" onclick="editProduct(${index})">Edit</button>
+                        <button class="btn-delete" onclick="deleteProduct(${index})">Delete</button>
+                    </div>
+                `;
+                productList.appendChild(div);
+            });
+        }
+
+        function addProduct() {
+            const input = document.getElementById('newProduct');
+            const productName = input.value.trim();
+            
+            if (productName) {
+                products.push(productName);
+                input.value = '';
+                renderProducts();
+            }
+        }
+
+        function deleteProduct(index) {
+            products.splice(index, 1);
+            renderProducts();
+        }
+
+        function editProduct(index) {
+            const productList = document.getElementById('productList');
+            const item = productList.children[index];
+            const currentName = products[index];
+            
+            item.innerHTML = `
+                <div class="edit-mode">
+                    <input type="text" id="editInput${index}" value="${currentName}">
+                    <button class="btn-save" onclick="saveEdit(${index})">Save</button>
+                    <button class="btn-cancel" onclick="renderProducts()">Cancel</button>
+                </div>
+            `;
+            
+            document.getElementById('editInput' + index).focus();
+        }
+
+        function saveEdit(index) {
+            const input = document.getElementById('editInput' + index);
+            const newName = input.value.trim();
+            
+            if (newName) {
+                products[index] = newName;
+                renderProducts();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('newProduct').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addProduct();
+                }
+            });
+            
+            renderProducts();
+        });
+    </script>
+</body>
+</html>

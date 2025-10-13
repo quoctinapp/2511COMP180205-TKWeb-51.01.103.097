@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        color: black;
+        overflow: hidden;
+        padding: 20px;
+    }
+    .outside-div{
+        padding: 50px;
+        border: 8px dotted blue;
+        height: 100%;
+        width: 100%;
+        border-radius: 60px;   
+    }
+    .middle-div{
+        padding: 80px;
+        border: 6px dashed red;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        
+    }
+    .inner-div{
+        border: 4px solid green;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
+<body>
+    <div class="outside-div">
+        <div class="middle-div">
+            <div class="inner-div">
+                <p style="text-align: center; font-size: 80px;">I am heavily packed</p>
+                <p style="text-align: center; font-size: 80px;">&lt;DIV&gt;</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

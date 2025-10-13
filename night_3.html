@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+</style>
+<body>
+    
+    <input type="text" placeholder="Nhap ngay...." id="day_input">
+    <button onclick="calculate_the_day()">tim so ngay</button>
+    
+    <!-- span#result -> tao 1 the span co id la result, chi hoat dong doi voi vscode
+    div.result -> tao 1 the div co class la result, chi hoat dong doi voi vscode -->
+    <p id="result"></p>
+</body>
+<script>
+    //load when html load
+    //load when html load
+    // c++ -> int, float, double, string, char,...
+    // javascript -> var, let, const
+
+    // ep tu string ve int -> parseInt(...)
+    // ................... -> parseFloat(...)
+    // mac dinh tat ca du lieu cua javascript se la string
+
+    // let -> khi mn muon tao 1 bien toan cuc
+
+    // let a = 10; // bien toan cuc
+    // for (let i = 1; i <= 100; ++i){
+    //     a = i;
+    //     console.log(a);
+    // }
+
+    //var b = 20; -> khong co tinh toan cuc
+
+    //const => lay 1 phan tu nao do, set 1 gia tri mac dinh: pi, gia toc,...
+    // for (var i = 1; i <= 100; ++i){
+    //     console.log(i);
+    // }
+
+    // innerHTML, innerText, textContent
+    // ban chat HTML -> cay
+    // html -> khung xuong
+    // css -> trang tri
+    // javascript -> bo nao
+
+    //querySelector, getElementByClasName, getElementByID
+
+    // toan tu c++: >=, <=, ==, !=; <, >, &&, ||, !
+    // toan tu javascript: >=, <=, ===
+    //API -> Application Programming Interface // do trinh trinh duyet cung cap 
+    //
+    // function calculate_the_day(){
+    //     const result = document.getElementById("result");
+    //     // const day_input = document.getElementById("day_input")
+    //     const day_input = parseInt(document.getElementById("day_input").value);// lay phan tu co id la day_input tu cau truc cay html
+    //     console.log(typeof(day_input));
+
+    //     // {} //object -> key,value, cach nhau boi dau cham, khi ket thuc, phai co dau phat
+    //     const month = { 1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31 }
+    //     result.innerHTML = month[day_input] ? `Thang ${day_input} co ${month[day_input]} ngay` : "Khong tim thay thang";
+
+    //     // if (day_input === 1 || day_input === 3 || day_input === 5|| day_input === 7|| day_input === 8|| day_input === 10|| day_input === 12|| day_input === 31){
+    //     //     // result.innerHTML = "Thang " + day_input + " co 31 ngay";
+    //     //     result.innerText = `Thang ${day_input} co 31 ngay`;
+    //     // }else 
+    // }
+
+    const result = document.getElementById("result");
+    let text = "<ul>";
+    for (let i = 1; i <= 10; ++i){
+        text += `<li>Day la so thu ${i}</li>`;
+    }
+    text += "</ul>";
+    result.innerHTML = text;
+</script>
+</html>

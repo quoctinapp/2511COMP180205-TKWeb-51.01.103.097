@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <p>So tien can gui:</p>
+        <input type="text" id="soTien" placeholder="Nhap so tien...">
+        <p>So nam gui:</p>
+        <input type="text" id="soNam" placeholder="Nhap so nam...">
+        <p>Lai suat ngan hang:</p>
+        <input type="text" id="laiSuat" placeholder="Nhap lai suat ngan hang hien tai!">
+        <br><br>
+        <button id="submit-btn">Tinh toan</button>
+    </form>
+    
+<script>
+    document.getElementById("submit-btn").addEventListener("click", (e)=>{
+        e.preventDefault();
+        
+        let soTien = document.getElementById("soTien");
+        let soNam = document.getElementById("soNam");
+        let laiSuat = document.getElementById("laiSuat");
+        try {
+            soTien = parseInt(soTien.value); 
+            soNam = parseInt(soNam.value); 
+            laiSuat = parseFloat(laiSuat.value); 
+            
+            laiSuat = laiSuat / 100;
+            let ans = soTien + soNam * (soTien * laiSuat);
+            
+            document.body.append(`Sau ${soNam} năm, số tiền cả gốc lẫn lãi là: ${ans}`)
+        } catch (error) {
+            console.error("Error in program!", error);
+        }
+    });
+</script>
+</body>
+</html>

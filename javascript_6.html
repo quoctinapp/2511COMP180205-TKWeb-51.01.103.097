@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="display"></span>
+</body>
+<script>
+    const lessons = [ "HTML", "CSS", "JavaScript", "ReactJS", "NodeJS", "MongoDB" ];
+    const display = document.getElementById("display");
+
+    let text = "<ul>"
+    lessons.forEach((item, index) => {
+        text += `<li> <a href="lesson_${index}.html"> ${item} </a> </li>`;
+    });
+    text += "</ul>";
+    display.innerHTML = text;
+
+</script>
+</html>
