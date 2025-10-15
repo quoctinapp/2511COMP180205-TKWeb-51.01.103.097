@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sở Thích</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: black;
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .hobby-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hobby-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .hobby-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .hobby-card h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .hobby-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .hobby-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        
+        .hobby-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .hobby-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .quote-box p {
+            font-size: 1.3em;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .quote-box span {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="learning_plan.html">Kế hoạch học tập</a></li>
+                <li><a href="hobby.html">Sở thích</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>🎨 Sở Thích Của Tớ</h1>
+            <p>Đại đại ik ~~</p>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title">Các Hoạt Động Yêu Thích</h2>
+            
+            <div class="hobby-grid">
+                <div class="hobby-card">
+                    <span class="hobby-icon">💻</span>
+                    <h3>Lập Trình</h3>
+                    <p>Đam mê tạo ra các sản phẩm công nghệ phục vụ đời sống:</p>
+                    <ul class="hobby-list">
+                        <li>Phát triển Web & App</li>
+                        <li>Nghiên cứu khoa học</li>
+                        <li>Xây dựng giải pháp thực tế</li>
+                    </ul>
+                </div>
+
+                <div class="hobby-card">
+                    <span class="hobby-icon">🤖</span>
+                    <h3>Trí Tuệ Nhân Tạo</h3>
+                    <p>Khám phá và nghiên cứu về A.I:</p>
+                    <ul class="hobby-list">
+                        <li>Thuật toán học máy</li>
+                        <li>Các model AI hiện đại</li>
+                        <li>Ứng dụng AI vào thực tế</li>
+                    </ul>
+                </div>
+
+                <div class="hobby-card">
+                    <span class="hobby-icon">📚</span>
+                    <h3>Anime & Manga</h3>
+                    <p>Thích khám phá văn hóa Nhật Bản:</p>
+                    <ul class="hobby-list">
+                        <li>Xem anime các thể loại</li>
+                        <li>Đọc manga thường xuyên</li>
+                        <li>Tìm hiểu văn hóa nhật bản</li>
+                    </ul>
+                </div>
+
+                <div class="hobby-card">
+                    <span class="hobby-icon">📖</span>
+                    <h3>Đọc Sách</h3>
+                    <p>Đam mê học hỏi kiến thức:</p>
+                    <ul class="hobby-list">
+                        <li>Sách học thuật</li>
+                        <li>Sách về công nghệ</li>
+                        <li>Sách phát triển bản thân</li>
+                    </ul>
+                </div>
+
+                <div class="hobby-card">
+                    <span class="hobby-icon">🎬</span>
+                    <h3>Giải Trí</h3>
+                    <p>Thư giãn với các hoạt động:</p>
+                    <ul class="hobby-list">
+                        <li>Xem phim</li>
+                        <li>Lướt TikTok</li>
+                        <li>Xem Netflix (nhưng hong có tìn huhuh)</li>
+                    </ul>
+                </div>
+
+                <div class="hobby-card">
+                    <span class="hobby-icon">🎯</span>
+                    <h3>Học Hỏi</h3>
+                    <p>Không ngừng phát triển bản thân:</p>
+                    <ul class="hobby-list">
+                        <li>Tự học công nghệ mới</li>
+                        <li>Tham gia các khóa học online</li>
+                        <li>Làm các dự án cá nhân</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p>"It's always seem impossible until it's done"</p>
+                <span>- Lý Trần Quốc Tín -</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Bản quyền thuộc về Lý Trần Quốc Tín. Cấm sao chép dưới mọi hình thức</p>
+    </footer>
+</body>
+</html>

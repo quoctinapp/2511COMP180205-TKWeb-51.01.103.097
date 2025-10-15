@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List - Hiện đại</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: #667eea;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    #taskInput {
+      flex: 1;
+      padding: 15px 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    #taskInput:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    #addBtn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    #addBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    #addBtn:active {
+      transform: translateY(0);
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      background: white;
+      margin: 12px 0;
+      padding: 18px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      animation: taskSlideIn 0.3s ease-out;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    @keyframes taskSlideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    li:hover {
+      border-color: #667eea;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    }
+
+    li.completed {
+      background: #f0f0f0;
+      opacity: 0.7;
+    }
+
+    li.completed .task-text {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .task-text {
+      flex: 1;
+      font-size: 16px;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .delete {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    }
+
+    .delete:hover {
+      transform: rotate(90deg) scale(1.1);
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+      font-size: 16px;
+    }
+
+    .empty-state::before {
+      content: "📝";
+      display: block;
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      #taskInput, #addBtn {
+        font-size: 14px;
+        padding: 12px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>✨ Danh sách công việc</h2>
+    
+    <div class="input-container">
+      <input type="text" id="taskInput" placeholder="Nhập công việc mới...">
+      <button id="addBtn">Thêm</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const input = document.getElementById("taskInput");
+    const addBtn = document.getElementById("addBtn");
+    const list = document.getElementById("taskList");
+
+    function updateEmptyState() {
+      if (list.children.length === 0) {
+        list.innerHTML = '<div class="empty-state">Chưa có công việc nào.<br>Hãy thêm công việc đầu tiên!</div>';
+      }
+    }
+
+    function addTask() {
+      const taskText = input.value.trim();
+      if (taskText === "") {
+        input.focus();
+        input.style.borderColor = "#ff6b6b";
+        setTimeout(() => {
+          input.style.borderColor = "#e0e0e0";
+        }, 500);
+        return;
+      }
+
+      // Xóa empty state nếu có
+      const emptyState = list.querySelector('.empty-state');
+      if (emptyState) {
+        emptyState.remove();
+      }
+
+      const li = document.createElement("li");
+      
+      const taskSpan = document.createElement("span");
+      taskSpan.classList.add("task-text");
+      taskSpan.textContent = taskText;
+
+      const delBtn = document.createElement("span");
+      delBtn.textContent = "×";
+      delBtn.classList.add("delete");
+
+      li.addEventListener("click", (e) => {
+        if (e.target !== delBtn) {
+          li.classList.toggle("completed");
+        }
+      });
+
+      delBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        li.style.animation = "taskSlideIn 0.3s ease-out reverse";
+        setTimeout(() => {
+          li.remove();
+          updateEmptyState();
+        }, 250);
+      });
+
+      li.appendChild(taskSpan);
+      li.appendChild(delBtn);
+      list.appendChild(li);
+      input.value = "";
+      input.focus();
+    }
+
+    addBtn.addEventListener("click", addTask);
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") addTask();
+    });
+
+    // Hiển thị empty state ban đầu
+    updateEmptyState();
+  </script>
+</body>
+
+</html>

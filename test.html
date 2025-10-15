@@ -4,64 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <h1>Add New Product</h1>
-    <input type="text" id="add_product">
-    <button onclick="add_product()">Add</button>
-    <h1>Display All Product</h1>
-    <table id="show_product_list" border="1" cellspacing="0" cellpadding="10"></table>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Add New Product</h2>
+                <form class="d-flex" role="search">
+                <input class="form-control me-2" type="add" placeholder="New Product" aria-label="add"/>
+                <button class="btn btn-outline-success" type="button" id="add">Add</button>
+            </div>
+            <div class="card-body">
+                <h2>Display All Product</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Product Name</th>
+                        <th colspan="2" style="text-align: right;">9 products</th>
+                    </tr>
+                    <tr>
+                        <td>Sony Xperia</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Samsung Galaxy</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Nokia 6</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Xiaomi Redmi Note 4</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+<tr>
+                        <td>Apple Iphone 6S</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Xiaomi Mi 5s Plus</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Apple Iphone 8 Plus</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Fujitsu F-04E</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>Oppo A71</td>
+                        <td><button type="button" class="btn btn-success" id="edit" onclick="editProduct(this)">Edit</button></td>
+                        <td><button type="button" class="btn btn-success" id="delete">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        const editProduct = (e) =>{
+            const newproduct = prompt('Hãy nhập tên mới.', e.closest('tr').cells[0].textContent);
+            if (newproduct != '') e.closest('tr').cells[0].textContent = newproduct;
+        };
+    </script>
 </body>
-<script>
-    let product_list =[];
-    
-    var table = '';
-    function show_product(){
-        if (table !== "") table = "";
-        
-        table +=
-            `<tr>
-                <th>Product Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>`;
-        for (var i = 0; i < product_list.length; i++){
-            table +=
-            `<tr>
-                <td>${product_list[i]}</td>
-                <td><button onclick="edit(this)">Edit</button></td>
-                <td><button onclick="del(this)">Delete</button></td>
-            </tr>`;
-        }
-
-        return table;
-    }
-
-    function add_product(){
-        var newProductInput = document.getElementById("add_product").value;
-        product_list.push(newProductInput);
-        document.getElementById('show_product_list').innerHTML = show_product();
-    }
-
-    function edit(button) {
-        var row = button.parentNode.parentNode;
-        var index = row.rowIndex - 1;
-        var currentName = product_list[index];
-        var newName = prompt("Nhập tên sản phẩm mới", currentName);
-        if (newName !== null && newName.trim() !== '') {
-            product_list[index] = newName;
-            document.getElementById('show_product_list').innerHTML = show_product();
-        }
-    }
-    
-    function del(index){
-        product_list.splice(index - 1, 1);
-        document.getElementById('show_product_list').innerHTML = show_product();
-    }
-
-    document.addEventListener("DOMContentLoaded", function(){
-        document.getElementById('show_product_list').innerHTML = show_product();
-    });
-    
-</script>
 </html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation - Hiện đại</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h2 {
+            color: #667eea;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #999;
+            transition: all 0.3s ease;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            outline: none;
+            background: white;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        input:focus + .input-icon {
+            color: #667eea;
+        }
+
+        input.error {
+            border-color: #ff6b6b;
+            animation: shake 0.5s;
+        }
+
+        input.success {
+            border-color: #51cf66;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .validation-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .validation-icon.show {
+            opacity: 1;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        #message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #message.error {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        #message.success {
+            background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3);
+            animation: successPulse 0.6s ease;
+        }
+
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-strength.show {
+            opacity: 1;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .strength-weak { 
+            width: 33%; 
+            background: #ff6b6b; 
+        }
+
+        .strength-medium { 
+            width: 66%; 
+            background: #ffd93d; 
+        }
+
+        .strength-strong { 
+            width: 100%; 
+            background: #51cf66; 
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .feature {
+            text-align: center;
+            flex: 1;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 11px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            .header h2 {
+                font-size: 26px;
+            }
+
+            input {
+                padding: 13px 13px 13px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>🚀 Đăng ký tài khoản</h2>
+            <p>Tạo tài khoản mới để bắt đầu</p>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-wrapper">
+                    <input type="text" id="email" placeholder="example@email.com">
+                    <span class="input-icon">📧</span>
+                    <span class="validation-icon" id="emailIcon"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="Nhập mật khẩu của bạn">
+                    <span class="input-icon">🔒</span>
+                    <span class="validation-icon" id="passwordIcon"></span>
+                </div>
+                <div class="password-strength" id="passwordStrength">
+                    <div class="password-strength-bar" id="strengthBar"></div>
+                </div>
+            </div>
+
+            <button type="submit">
+                <span>Đăng ký ngay</span>
+            </button>
+        </form>
+
+        <p id="message"></p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-text">Bảo mật cao</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">Nhanh chóng</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✨</div>
+                <div class="feature-text">Dễ sử dụng</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("registerForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const message = document.getElementById("message");
+        const emailIcon = document.getElementById("emailIcon");
+        const passwordIcon = document.getElementById("passwordIcon");
+        const passwordStrength = document.getElementById("passwordStrength");
+        const strengthBar = document.getElementById("strengthBar");
+
+        passwordInput.addEventListener("input", function() {
+            const pwd = passwordInput.value;
+            
+            if (pwd.length === 0) {
+                passwordStrength.classList.remove("show");
+                return;
+            }
+
+            passwordStrength.classList.add("show");
+            strengthBar.className = "password-strength-bar";
+
+            if (pwd.length < 6) {
+                strengthBar.classList.add("strength-weak");
+            } else if (pwd.length < 10) {
+                strengthBar.classList.add("strength-medium");
+            } else {
+                strengthBar.classList.add("strength-strong");
+            }
+        });
+
+        emailInput.addEventListener("input", function() {
+            if (emailInput.value.includes("@") && emailInput.value.length > 5) {
+                emailInput.classList.remove("error");
+                emailInput.classList.add("success");
+                emailIcon.textContent = "✓";
+                emailIcon.style.color = "#51cf66";
+                emailIcon.classList.add("show");
+            } else if (emailInput.value.length > 0) {
+                emailInput.classList.remove("success");
+                emailIcon.classList.remove("show");
+            }
+        });
+
+        passwordInput.addEventListener("input", function() {
+            if (passwordInput.value.length >= 6) {
+                passwordInput.classList.remove("error");
+                passwordInput.classList.add("success");
+                passwordIcon.textContent = "✓";
+                passwordIcon.style.color = "#51cf66";
+                passwordIcon.classList.add("show");
+            } else if (passwordInput.value.length > 0) {
+                passwordInput.classList.remove("success");
+                passwordIcon.classList.remove("show");
+            }
+        });
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            let errors = [];
+
+            emailInput.classList.remove("error", "success");
+            passwordInput.classList.remove("error", "success");
+            message.classList.remove("show", "error", "success");
+
+            if (emailInput.value === "" || !emailInput.value.includes("@")) {
+                errors.push("Email không hợp lệ!");
+                emailInput.classList.add("error");
+                emailIcon.textContent = "✗";
+                emailIcon.style.color = "#ff6b6b";
+                emailIcon.classList.add("show");
+            }
+
+            const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+            
+            if (passwordInput.value.length < 6) {
+                errors.push("Mật khẩu phải có ít nhất 6 ký tự!");
+                passwordInput.classList.add("error");
+                passwordIcon.textContent = "✗";
+                passwordIcon.style.color = "#ff6b6b";
+                passwordIcon.classList.add("show");
+            } else if (!specialCharRegex.test(passwordInput.value)) {
+                errors.push("Mật khẩu phải có ít nhất 1 ký tự đặc biệt (!@#$%^&*...)");
+                passwordInput.classList.add("error");
+                passwordIcon.textContent = "✗";
+                passwordIcon.style.color = "#ff6b6b";
+                passwordIcon.classList.add("show");
+            }
+            
+            setTimeout(() => {
+                message.classList.add("show");
+                if (errors.length > 0) {
+                    message.classList.add("error");
+                    message.innerHTML = errors.join("<br>");
+                } else {
+                    message.classList.add("success");
+                    message.innerHTML = "✓ Đăng ký thành công!";
+                    
+                    setTimeout(() => {
+                        form.reset();
+                        emailInput.classList.remove("success");
+                        passwordInput.classList.remove("success");
+                        emailIcon.classList.remove("show");
+                        passwordIcon.classList.remove("show");
+                        passwordStrength.classList.remove("show");
+                        message.classList.remove("show");
+                    }, 2000);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
