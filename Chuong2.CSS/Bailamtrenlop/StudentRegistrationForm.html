@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      background-color: #f8d6d1;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    form {
+      width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .form-group label {
+      width: 150px;
+      font-weight: bold;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="file"],
+    .form-group select,
+    .form-group textarea {
+      flex: 1;
+      padding: 4px;
+      box-sizing: border-box;
+    }
+    .name-field {
+      display: flex;
+      gap: 10px;
+      flex: 1;
+    }
+    .name-field input {
+      flex: 1;
+      padding: 4px;
+      box-sizing: border-box;
+    }
+    .dob {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dob input {
+      width: 80px;
+      text-align: center;
+      padding: 4px;
+    }
+    .mobile {
+      gap: 4px;
+    }
+    .mobile input:first-child {
+      width: 50px;
+      text-align: center;
+    }
+    .mobile input:last-child {
+      width: 350px;
+    }
+    .btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+    input[type="submit"] {
+      padding: 8px 20px;
+      background: white;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Registration Form</h1>
+  <form>
+    <div class="form-group">
+      <label>Roll no. :</label>
+      <input type="text" name="roll">
+    </div>
+
+    <div class="form-group">
+      <label>Student name :</label>
+      <div class="name-field">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Father's name :</label>
+      <input type="text" name="father">
+    </div>
+
+    <div class="form-group">
+      <label>Date of birth :</label>
+      <div class="dob">
+        <input type="text" placeholder="Day">
+        <span>-</span>
+        <input type="text" placeholder="Month">
+        <span>-</span>
+        <input type="text" placeholder="Year">
+        <span>(DD-MM-YYYY)</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Mobile no. :</label>
+      <div class="mobile">
+        <input class="first-child" type="text" value="+91" readonly>
+        <span>-</span>
+        <input class="last-child" type="text">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email id :</label>
+      <input type="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label>Password :</label>
+      <input type="password" name="password">
+    </div>
+
+    <div class="form-group">
+      <label>Gender :</label>
+      <div>
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Department :</label>
+      <div>
+        <input type="checkbox"> CSE
+        <input type="checkbox"> IT
+        <input type="checkbox"> ECE
+        <input type="checkbox"> Civil
+        <input type="checkbox"> Mech
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Course :</label>
+      <select>
+        <option style="text-align: center;">---------------- Select Current Course's ----------------</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Student photo :</label>
+      <input type="file">
+    </div>
+
+    <div class="form-group">
+      <label>City :</label>
+      <input type="text" name="city">
+    </div>
+
+    <div class="form-group">
+      <label>Address :</label>
+      <textarea rows="3"></textarea>
+    </div>
+
+    <div class="btn">
+      <input type="submit" value="Register">
+    </div>
+  </form>
+</body>
+</html>

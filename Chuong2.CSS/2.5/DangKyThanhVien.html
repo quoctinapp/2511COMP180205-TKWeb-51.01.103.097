@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang đăng kí thành viên</title>
+    <style>
+       .myTextbox{
+        color:#99ff33;
+        background-color: #006699;
+        border:1px solid #996633;
+        width:300px;
+
+       } 
+       #form1 table{
+        border:5px groove #993366;
+        background-color: #ffdddd;
+        color:#003399;
+       }
+       #form1 table td{
+        border:1px solid #cc9999;
+       }
+       table{
+        margin: 0 auto;
+       }
+       .o2{
+        width:70%;
+       }
+    </style>
+</head>
+<body>
+    <div>
+    <form id="form1">
+        <table cellpadding="4" cellspacing="0" width="500" border="1" caption="ĐĂNG KÝ THÀNH VIÊN CLB YÊU NHẠC">
+            <tr class="myTextbox">
+                <td>Họ tên</td>
+                <td><input class="o2" type="text" name="txtHoTen" id="txtHoTen" placeholder="Nhập Họ tên"></td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Tên đăng nhập</td>
+                <td><input class="o2" type="text" name="txtUsername" id="txtUsername" placeholder="Nhập tên đăng nhập"></td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Mật khẩu</td>
+                <td><input class="o2" type="text" name="txtPass" id="txtPass"></td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Gõ lại mật khẩu</td>
+                <td>
+                    <input class="o2" type="text" name="txtRePass" id="txtRePass">
+                </td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Độ tuổi</td>
+                <td><input type="number" name="tuoi" id="txtTuoi" min="18" max="45" value="20"></td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Giới tính</td>
+                <td>
+                    <input type="radio" name="gender" value="0"> Nam
+                    <input type="radio" name="gender" value="1"checked> Nữ
+                </td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Ngoại ngữ</td>
+                <td>
+                    <input type="checkbox" id="chkAnh" name="language" value="English">
+                    <label for="chkAnh">Anh văn</label>
+                    <input type="checkbox" id="chkPhap" name="language" value="French">
+                    <label for="chkPhap">Pháp văn</label>
+                    <input type="checkbox" id="chkHoa" name="language" value="China">
+                    <label for="chkHoa">Hoa văn</label>
+                </td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Thành phố</td>
+                <td>
+                    <input class="o2" list="cities" name="city" id="txtCity" placeholder="Chọn hoặc nhập thành phố">
+                    <datalist id="cities">
+                        <option value="Hà Nội">
+                        <option value="TP. Hồ Chí Minh">
+                        <option value="Đà Nẵng">
+                        <option value="Hải Phòng">
+                        <option value="Cần Thơ">
+                        <option value="Huế">
+                        <option value="Nha Trang">
+                    </datalist>
+                </td>
+            </tr>
+
+            <tr class="myTextbox">
+                <td>Nghề nghiệp</td>
+                <td>
+                <select class="o2" id="cboNgheNghiep" name="job">
+                    <option value="0">Bạn làm nghề gì</option>
+                    <option value="1">Học sinh - Sinh viên</option>
+                    <option value="2">Giáo viên</option>
+                    <option value="3">Nhân viên</option>
+                </select>
+                </td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Hình</td>
+                <td><input type="file" name="hinh" id="fHinh"></td>
+            </tr>
+            <tr class="myTextbox">
+                <td>Sở thích</td>
+                <td><textarea class="o2" id="txtSoThich" name="hobbies"></textarea></td>
+            </tr>
+            <tr align="center">
+                <td colspan="2">
+                    <input type="submit" name="trangthai" id="bthDangKy" value="Đăng ký">
+                    <input type="reset" name="trangthai" id="bthXoa" value="Làm lại">
+                </td>
+            </tr>
+            
+
+            <input type="hidden" name="Day" id="NgayDangKy" value="03/23/2023">
+        </table>
+    </form>
+    </div>
+</body>
+</html>

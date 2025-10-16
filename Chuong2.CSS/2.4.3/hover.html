@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover me</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 80px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        li a {
+            border:1px solid rgb(187, 77, 77);
+            width:100px;
+            padding:10px;
+            border-radius: 10px;
+            background-color: rgb(207, 157, 157);
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s ease; /* thêm hiệu ứng mượt */
+        }
+        li a:hover{
+            -webkit-transform: rotate(-10deg) scale(2);
+            transform:rotate(-10deg) scale(2);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Hover me!</a></li>
+        <li><a href="#">Hover me!</a></li>
+        <li><a href="#">Hover me!</a></li>
+        <li><a href="#">Hover me!</a></li>
+    </ul>
+</body>
+</html>
