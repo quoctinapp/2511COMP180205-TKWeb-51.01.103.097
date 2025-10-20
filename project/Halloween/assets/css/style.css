@@ -476,7 +476,7 @@ button {
 .new-swiper .swiper-wrapper {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(242px, 1fr));
-    gap: 3rem;
+    gap: 4rem;
     transform: none !important;
 }
 
