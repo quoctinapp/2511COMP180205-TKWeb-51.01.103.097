@@ -17,12 +17,30 @@
             text-align: center;
             margin-bottom: 30px;
         }
+        .student-info {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .student-info p {
+            margin: 8px 0;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+        .student-info .label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: inline-block;
+            width: 120px;
+        }
         .project-list {
             list-style: none;
             padding: 0;
         }
         .project-list li {
-            margin: 10px 0;
+            margin: 15px 0;
         }
         .project-list a {
             display: block;
@@ -48,6 +66,11 @@
 </head>
 <body>
     <h1>Danh sách các Project Thiết kế Web</h1>
+    <div class="student-info">
+        <p><span class="label">MSSV:</span> 51.01.103.097</p>
+        <p><span class="label">Họ và tên:</span> Lý Trần Quốc Tín</p>
+        <p><span class="label">Lớp:</span> Sư phạm Tin học B</p>
+    </div>
     <ul class="project-list">
         <li><a href="/project/FunnyFish/index.html">
             <span class="project-name">🐠 Funny Fish Game</span>
